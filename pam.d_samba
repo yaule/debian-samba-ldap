@@ -1,0 +1,17 @@
+#%PAM-1.0
+auth        required      /lib/x86_64-linux-gnu/security/pam_env.so
+auth        sufficient    /lib/x86_64-linux-gnu/security/pam_winbind.so
+auth        sufficient    /lib/x86_64-linux-gnu/security/pam_unix.so like
+auth        nullok use_first_pass
+auth        required      /lib/x86_64-linux-gnu/security/pam_deny.so
+
+account     sufficient    /lib/x86_64-linux-gnu/security/pam_winbind.so
+account     required      /lib/x86_64-linux-gnu/security/pam_unix.so
+
+password    required      /lib/x86_64-linux-gnu/security/pam_cracklib.so retry=3 minlen=2 dcredit=0 ucredit=0
+password    sufficient    /lib/x86_64-linux-gnu/security/pam_unix.so nullok use_authtok md5 shadow
+password    required     /lib/x86_64-linux-gnu/security/pam_deny.so
+
+session     required      /lib/x86_64-linux-gnu/security/pam_mkhomedir.so skel=/etc/skel/ umask=0022
+session     required      /lib/x86_64-linux-gnu/security/pam_limits.so
+session     required      /lib/x86_64-linux-gnu/security/pam_unix.so
