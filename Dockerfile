@@ -2,9 +2,6 @@ FROM debian:10
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN sed -i 's/deb.debian.org/mirrors.163.com/g' /etc/apt/sources.list && \
-	sed -i 's/security.debian.org/mirrors.163.com/g'  /etc/apt/sources.list
-
 # Install NSS
 RUN apt-get update && \
   apt-get install -y libnss-ldap samba slapd ldap-utils winbind samba smbldap-tools && \
