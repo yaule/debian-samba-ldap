@@ -16,11 +16,11 @@
 docker run --rm -it -p 445:445 -p 139:139 --name samba \
     -e SAMBA_LDAP_HOST=127.0.0.1 \
     -e SAMBA_LDAP_BASE_DN='dc=samba,dc=com' \
-    -e SAMBA_LDAP_ADMIN_DN="cn=admin,dc=samba,dc=como" \
+    -e SAMBA_LDAP_ADMIN_DN="cn=admin,dc=samba,dc=com" \
     -e SAMBA_LDAP_DOMAIN='samba.com' \
     -e SAMBA_LDAP_PASSWORD='password' \
     -v $(pwd)/share:/mnt/share \
-    -v $(pwd)/home:/home/users smb
+    -v $(pwd)/home:/home/users kasen/samba-ldap
 
 ```
 
@@ -32,5 +32,5 @@ docker run --rm -it -p 445:445 -p 139:139 --name samba \
     -v $(pwd)/smb.conf:/etc/samba/smb.conf:ro \
     -v $(pwd)/share:/mnt/share \
     -v $(pwd)/home:/home/users \
-    -e SAMBA_LDAP_PASSWORD='password' smb
+    -e SAMBA_LDAP_PASSWORD='password' kasen/samba-ldap
 ```
